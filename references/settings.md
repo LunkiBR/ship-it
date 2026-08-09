@@ -8,6 +8,7 @@ The central control hub where users manage account details, preferences, notific
 - [ ] **Categorized section layout** — Grouped into clear visual categories (Account, Notifications, Security, Appearance, Support) to make preferences scannable.
 - [ ] **User identity header** — Displaying active avatar, display name, and primary email address at the top of the main settings screen.
 - [ ] **Platform-native toggle controls** — Using platform-native switch controls: on iOS `UISwitch`, on Android `Switch`, and on web accessible toggle controls with `aria-checked`.
+- [ ] **Immediate-effect toggle behavior** — A toggle applies its new state the instant it's flipped; it never waits for a separate Save/Submit action, and its label describes what turning it *on* does rather than reading as a neutral yes/no.
 - [ ] **Security & authentication shortcuts** — Direct links to update passwords, manage two-factor authentication (2FA), and view active device sessions.
 - [ ] **Notification preference navigation** — Pathways to channel-specific notification controls (email, push, in-app) organized by category.
 - [ ] **Appearance and regional settings** — Controls for theme selection (Light, Dark, System default), language, timezone, and date/number formats.

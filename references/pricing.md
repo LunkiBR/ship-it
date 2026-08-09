@@ -11,4 +11,4 @@ The pricing page presenting subscription plans, feature comparisons, billing cad
 - [ ] **Prominent CTA per tier** — Distinct action button on each plan card ("Start 14-day trial", "Buy now", "Contact sales").
 - [ ] **Free trial / tier details** — Clear disclosure of what happens when a trial ends or quota limits are reached.
 - [ ] **Pricing FAQ section** — Answers addressing common billing, upgrade, seat counting, and cancellation questions.
-- [ ] **Enterprise custom quote pathway** — Dedicated Enterprise tier card directing large organizations to book a demo.
+- [ ] **Enterprise custom quote pathway** — Even here, show a starting price, typical-scenario price, or range next to "Book a demo" rather than hiding the number entirely — hiding all pricing behind a sales contact reads as evasive to prospective buyers.

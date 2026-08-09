@@ -5,17 +5,48 @@
 
 **A Claude Code skill that catches the boring-but-important details before you ship a screen or feature.**
 
-Not a linter for your code — a linter for the *product*. Login, checkout, billing, empty states, 404s, admin panels: the parts of an app that follow well-known patterns, and that get half-finished anyway because nobody double-checked the boring stuff before calling it done.
+It doesn't check your code — it checks the product surface around that code: login, checkout, billing, empty states, 404s, admin panels, and the other screens that follow well-known patterns and get half-finished anyway because nobody double-checked the boring stuff before calling it done.
 
 ## The problem
 
-Most teams don't ship broken code. They ship *incomplete* screens: a login form with no "forgot password," a paywall with no restore-purchases button, a pricing page with no FAQ, a cancel-subscription flow that guilt-trips the user on the way out. None of that shows up in a test suite. It shows up in support tickets, one-star reviews, and App Store rejections.
+Most teams don't ship broken code. They ship *incomplete* screens: a login form with no "forgot password," a paywall with no restore-purchases button, a pricing page with no FAQ, a cancel-subscription flow that guilt-trips the user on the way out. None of that shows up in a test suite — it shows up later, in support tickets, one-star reviews, and App Store rejections.
 
 This skill gives an agent a structured, opinionated catalog of these patterns — organized so it can be consulted cheaply and precisely, not dumped wholesale into every conversation.
 
+## What this checks — and what it doesn't
+
+ship-it looks for missing or incomplete **product and UX** details on a screen: a password field with no password-manager support, a paywall with no restore-purchases button, that kind of thing. It is not an accessibility scanner and not a security auditor. Passing every item in a pattern's checklist doesn't mean a screen is WCAG-conformant or secure — a real audit (axe, Lighthouse, a pen test) is still a separate, complementary thing to run. Standards like WCAG, Apple's HIG, and Nielsen Norman Group's usability research get cited inside individual checklist items because they're the most specific, checkable detail available for that one item, not because this skill verifies compliance with them end to end.
+
+## Using it
+
+Once installed as a Claude Code skill, it triggers on intent, not on the word "checklist":
+
+> "I just finished the login screen, can you check it over before I ship?"
+> "Building a pricing page for the new plan — what usually goes on one of these?"
+> "Is our cancel-subscription flow missing anything?"
+
+The agent picks the section, opens only that section's index, names what the product already has versus what a `Fundamental`/`Common` pattern would predict is missing, then opens only the specific pattern file it needs to check line-by-line.
+
+### What comes back
+
+For the login example above, a real answer looks something like this — a short list grouped by confidence, not a wall of checkboxes:
+
+> Checked against the **Login** pattern (`Common` tier — assumed to apply, since this product has user accounts).
+>
+> **Already there:** email/password fields, password visibility toggle, forgot-password recovery.
+>
+> **Missing:**
+> - **Credential autofill** — the password field has no `autocomplete="current-password"`, so password managers can't offer to fill it ([MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete)).
+> - **Non-revealing error states** — "Incorrect password" confirms the email is registered; a generic message avoids that leak.
+> - **Rate limiting feedback** — five failed attempts just reload the same form, with no cooldown message ([NN/g, Visibility of System Status](https://www.nngroup.com/articles/visibility-system-status/)).
+>
+> **Not flagged:** SAML/SSO — this is a consumer product with no B2B customers, so it wasn't raised as a gap.
+
+That last line is the tier system at work: a pattern, or a single item inside one, only becomes a reported gap when the product's own context calls for it, not because the checklist lists it.
+
 ## How it works
 
-A single skill, three hops deep, each hop loaded only when the one before it says to:
+Checking a screen doesn't mean loading the whole catalog. An agent works through three narrowing steps: figure out which of the four sections the screen belongs to, open that section's short index to see which patterns apply, then open only the one or two pattern files it actually needs to check line by line. A login screen never pulls in the checkout catalog.
 
 ```
 SKILL.md              →  a pure router: steps, judgment rules, and 4 section names
@@ -43,7 +74,7 @@ All 59 indexed patterns across the four sections are written and pass `scripts/v
 | Storefront (website) | 23 | 23 |
 | Choreography (flows) | 13 | 13 |
 
-`Billing` and `Login` were written by hand first and set the quality bar; the remaining 57 were generated from `generation/PROMPT.md` against that same bar (real citations only when confident they resolve to something real — WCAG 2.2, Apple's HIG/App Store Review Guidelines, Material Design, MDN, GOV.UK Design System), then spot-checked rather than trusted blindly. What's left is deepening citations further over time, not filling gaps.
+`Billing` and `Login` were written by hand first and set the quality bar; the remaining 57 were generated from `generation/PROMPT.md` against that same bar (real citations only when confident they resolve to something real — WCAG 2.2, Apple's HIG/App Store Review Guidelines, Material Design, MDN, GOV.UK Design System, and Nielsen Norman Group's usability research), then spot-checked rather than trusted blindly. What's left is deepening citations further over time — Baymard Institute's e-commerce research is a natural next source for Cart/Checkout/Pricing specifically — not filling gaps.
 
 ## Project structure
 
@@ -69,16 +100,6 @@ scripts/
   ISSUE_TEMPLATE/            new-pattern and inaccuracy-report templates
 LICENSE                      MIT
 ```
-
-## Using it
-
-Once installed as a Claude Code skill, it triggers on intent, not on the word "checklist":
-
-> "I just finished the login screen, can you check it over before I ship?"
-> "Building a pricing page for the new plan — what usually goes on one of these?"
-> "Is our cancel-subscription flow missing anything?"
-
-The agent picks the section, opens only that section's index, names what the product already has versus what a `Fundamental`/`Common` pattern would predict is missing, then opens only the specific pattern file it needs to check line-by-line.
 
 ## Contributing a pattern
 

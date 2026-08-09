@@ -10,5 +10,5 @@ The persistent bottom navigation bar providing single-tap access to 3–5 top-le
 - [ ] **Distinct active state** — Visually distinct selected state using brand accent color, filled icon variants, or heavy font weight.
 - [ ] **Real-time badge counts** — Subtle numerical or dot badges for tabs with unread alerts, updating dynamically without full screen reloads.
 - [ ] **Persistent presence** — Remains visible across main view hierarchies; hidden automatically in deep detail screens or modal workflows.
-- [ ] **Accessible touch targets** — Minimum tap target area of 44×44pt on iOS per [Apple's Human Interface Guidelines on layout](https://developer.apple.com/design/human-interface-guidelines/layout) and 48×48dp on Android per [Material Design accessibility guidelines](https://m3.material.io/foundations/accessibility/accessibility-checklist).
+- [ ] **Accessible touch targets** — Minimum tap target area of 44×44pt on iOS (Apple Human Interface Guidelines) and 48×48dp on Android (Material Design accessibility guidelines).
 - [ ] **Selection haptic feedback** — Light haptic tap upon switching active tabs to confirm selection.

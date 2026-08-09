@@ -11,4 +11,4 @@ The high-level administration suite for platform owners to oversee users, system
 - [ ] **System usage overview** — High-level metric dashboards tracking API calls, storage usage, and active seats.
 - [ ] **Organization billing control** — Centralized view of invoices, contract terms, seat counts, and payment methods.
 - [ ] **Comprehensive audit log** — Immutable log recording security events, permission modifications, and admin actions.
-- [ ] **Typed confirmation danger zone** — Requiring typed confirmation (e.g. typing workspace name) for destructive admin operations.
+- [ ] **Typed confirmation danger zone** — Requiring typed confirmation (e.g. typing the workspace name) reserved for the single most destructive, rarest action here (deleting the workspace), not applied to every delete button — overusing this pattern turns it into a rote click that stops protecting anything.

@@ -10,9 +10,9 @@ Where users view and manage their personal profile, authentication credentials, 
 - [ ] **Email address management** — Current email displayed with option to update, triggering a verification link to the new address before replacing the existing contact detail.
 - [ ] **Password change flow** — Dedicated interface to change passwords requiring confirmation of the current password first to prevent unauthorized session hijacking.
 - [ ] **Linked third-party accounts** — Overview of connected OAuth providers (Google, Apple, SAML SSO) with options to link or disconnect, blocking disconnection if it is the account's sole authentication method.
-- [ ] **Save confirmation feedback** — Clear feedback that profile updates were saved, using inline notifications or accessible toasts with `role="status"` per [WCAG 2.1 SC 4.1.3, Status Messages](https://w3c.github.io/wcag/understanding/status-messages.html).
+- [ ] **Save confirmation feedback** — Clear feedback that profile updates were saved, using inline notifications or accessible toasts with `role="status"` (WCAG 2.1 SC 4.1.3, Status Messages).
 - [ ] **Account deactivation vs deletion** — Clearly separated options for temporary deactivation and permanent account deletion, with explicit explanations of data impact.
-- [ ] **(Mobile) In-app account deletion path** — Direct pathway to initiate account deletion inside the app, required by [Apple's App Store Review Guideline 5.1.1(v)](https://developer.apple.com/app-store/review/guidelines/#account-deletion) for any app supporting account creation.
+- [ ] **(Mobile) In-app account deletion path** — Direct pathway to initiate account deletion inside the app, required by Apple App Store Review Guideline 5.1.1(v) for any app supporting account creation.
 
 ## Notes
 
