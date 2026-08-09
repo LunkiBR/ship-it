@@ -1,5 +1,8 @@
 # Ship It
 
+[![Validate](https://github.com/LunkiBR/ship-it/actions/workflows/validate.yml/badge.svg)](https://github.com/LunkiBR/ship-it/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/github/license/LunkiBR/ship-it)](LICENSE)
+
 **A Claude Code skill that catches the boring-but-important details before you ship a screen or feature.**
 
 Not a linter for your code — a linter for the *product*. Login, checkout, billing, empty states, 404s, admin panels: the parts of an app that follow well-known patterns, and that get half-finished anyway because nobody double-checked the boring stuff before calling it done.
@@ -58,9 +61,7 @@ references/
   TEMPLATE.md                format every new pattern file follows
   *.md                       59 pattern files, one per row in the four section indexes
 generation/
-  PROMPT.md                  the brief handed to a model to write the remaining patterns
-  create_references.py       the script that ran the brief and wrote the 57 files
-  verify_references.py       format check run against the generated output before merging
+  PROMPT.md                  the brief handed to a model to write the bulk of the patterns
 scripts/
   validate.py                spec/format compliance check — the project's one automated test
 .github/
