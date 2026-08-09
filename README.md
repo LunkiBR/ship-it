@@ -86,6 +86,10 @@ Every reference file follows [`references/TEMPLATE.md`](references/TEMPLATE.md):
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process, and [AGENTS.md](AGENTS.md) for repository layout and terminology.
 
+## Security
+
+No code runs as part of using this skill — it's Markdown an agent reads. See [SECURITY.md](SECURITY.md) for the prompt-injection threat model and how to report a concern.
+
 ## License
 
 [MIT](LICENSE)
